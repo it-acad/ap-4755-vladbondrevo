@@ -1,0 +1,19 @@
+<h1>User Books</h1>
+
+<ul>
+
+{% for book in books %}
+
+    <li>
+        {{ book.name }}
+    </li>
+
+{% empty %}
+
+    <li>
+        No active books
+    </li>
+
+{% endfor %}
+
+</ul>

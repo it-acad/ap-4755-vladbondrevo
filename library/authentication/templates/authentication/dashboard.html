@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна панель</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5;">
+
+    <div style="max-width: 600px; margin: 50px auto; background-color: white; border: 1px solid #d9d9d9; padding: 30px; border-radius: 8px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+        <h2 style="color: #1890ff;">Вітаємо в системі Бібліотеки!</h2>
+
+        <p style="font-size: 16px; color: #333; margin: 20px 0;">
+            Ви успішно авторизувалися як: <strong>{{ request.user.email }}</strong>
+        </p>
+
+        <p style="color: #52c41a; font-weight: bold; margin-bottom: 30px;">
+            ✓ Модуль авторизації (Auth) працює в штатному режимі.
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid #f0f0f0; margin: 20px 0;">
+
+        <div style="margin-top: 20px;">
+            <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background-color: #ff4d4f; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 77, 79, 0.2);">
+                    Вийти з акаунта (Log out)
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

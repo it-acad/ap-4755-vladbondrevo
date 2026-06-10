@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список користувачів</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f9f9f9; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+
+    <h2>Усі користувачі системи</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>ПІБ</th>
+                <th>Роль</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td><a href="{% url 'user_detail' u.id %}">{{ u.email }}</a></td>
+                <td>{{ u.last_name }} {{ u.first_name }} {{ u.middle_name }}</td>
+                <td>
+                    {% if u.role == 1 %}
+                        Бібліотекар
+                    {% else %}
+                        Читач
+                    {% endif %}
+                </td>
+                <td>
+                    {% if u.is_active %}
+                        Активний
+                    {% else %}
+                        Заблокований
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

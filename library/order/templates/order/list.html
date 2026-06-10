@@ -1,0 +1,58 @@
+<h1>All Orders</h1>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Book</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for order in orders %}
+
+<tr>
+
+    <td>{{ order.id }}</td>
+
+    <td>{{ order.user.email }}</td>
+
+    <td>{{ order.book.name }}</td>
+
+    <td>
+
+        {% if order.end_at %}
+            Closed
+        {% else %}
+            Active
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if not order.end_at %}
+
+        <form
+            method="post"
+            action="{% url 'close_order' order.id %}"
+        >
+
+            {% csrf_token %}
+
+            <button type="submit">
+                Close
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>

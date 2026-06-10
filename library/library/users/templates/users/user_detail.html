@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі користувача</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f9f9f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 500px; }
+        p { font-size: 16px; line-height: 1.6; }
+        .back-link { display: inline-block; margin-top: 20px; color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Профіль користувача №{{ target_user.id }}</h2>
+    <hr>
+    <p><strong>Email:</strong> {{ target_user.email }}</p>
+    <p><strong>Прізвище:</strong> {{ target_user.last_name|default:"—" }}</p>
+    <p><strong>Ім'я:</strong> {{ target_user.first_name|default:"—" }}</p>
+    <p><strong>По батькові:</strong> {{ target_user.middle_name|default:"—" }}</p>
+    <p><strong>Роль:</strong> {% if target_user.role == 1 %}Бібліотекар (Адмін){% else %}Читач (Візитер){% endif %}</p>
+    <p><strong>Статус аккаунту:</strong> {% if target_user.is_active %}Активний{% else %}Неактивний{% endif %}</p>
+
+    <a href="{% url 'users_list' %}" class="back-link">← Назад до списку</a>
+</div>
+
+</body>
+</html>

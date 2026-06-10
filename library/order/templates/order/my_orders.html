@@ -1,0 +1,41 @@
+<h1>My Orders</h1>
+
+{% for order in orders %}
+
+<div>
+
+    <h3>
+        {{ order.book.name }}
+    </h3>
+
+    <p>
+        Created:
+        {{ order.created_at }}
+    </p>
+
+    <p>
+        Planned return:
+        {{ order.plated_end_at }}
+    </p>
+
+    <p>
+        Status:
+
+        {% if order.end_at %}
+            Closed
+        {% else %}
+            Active
+        {% endif %}
+    </p>
+
+</div>
+
+<hr>
+
+{% empty %}
+
+<p>
+    You don't have any orders.
+</p>
+
+{% endfor %}

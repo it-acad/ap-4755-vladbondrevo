@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати автора</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f9f9f9; }
+        .form-container { max-width: 400px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .field { margin-bottom: 15px; }
+        .field label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .field input { width: 100%; padding: 8px; box-sizing: border-box; }
+        .btn { background: #28a745; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; font-size: 16px; border-radius: 4px; }
+        .back-link { display: block; margin-top: 15px; color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Новий автор</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="field">
+            <label>Ім'я:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="field">
+            <label>Прізвище:</label>
+            <input type="text" name="surname" required>
+        </div>
+        <div class="field">
+            <label>По батькові (необов'язково):</label>
+            <input type="text" name="patronymic">
+        </div>
+        <button type="submit" class="btn">Зберегти</button>
+    </form>
+    <a href="{% url 'authors_list' %}" class="back-link">← Назад до списку</a>
+</div>
+
+</body>
+</html>

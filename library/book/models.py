@@ -21,6 +21,10 @@ class Book(models.Model):
     description = models.TextField()
     count = models.IntegerField(default=10)
     authors = models.ManyToManyField(Author, related_name='books')
+    publication_year = models.PositiveIntegerField(
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         """
